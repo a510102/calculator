@@ -1,0 +1,131 @@
+@import 'reset';
+
+// variable
+
+$color-gray: #E8E8E8;
+$color-gary-shawde:#00000066;
+$color-lightblue: #00C4FF;
+$color-darkblue:#062145;
+$color-drakblue-bg:#041936;
+$color-write: #FFFFFF;
+$color-purple: #6C00FF;
+
+$fontsize-s: 16px;
+$fontsize-m: 24px;
+$fontsize-l: 56px;
+
+
+// mixin
+
+@mixin magCen {
+  margin: 0 auto;
+}
+
+@mixin flex {
+  display: flex;
+}
+
+@mixin flexCen {
+  @include flex();
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin box {
+  width: 72px;
+  height: 64px;
+  border-radius: 20px;
+  opacity: 1;  
+  margin-bottom: 16px;
+  @include flexCen();
+  p {
+    cursor: pointer;
+  }
+}
+// layout
+
+.wrap {
+  @include magCen();
+  @include flexCen();
+  width: 1280px;
+  height: 800px;
+  background-color: $color-gray;
+  font-family: Roboto;
+  color: $color-write;
+}
+
+//calculator 
+
+.calculator {
+  width: 350px;
+  height: 525px;
+  background: $color-darkblue 0% 0% no-repeat padding-box;
+  box-shadow: 0px 20px 40px $color-gary-shawde;
+  border-radius: 20px;
+  opacity: 1;
+  .calculator-content {
+    background: $color-drakblue-bg 0% 0% no-repeat padding-box;
+    height: 109px;
+    border-radius: 20px 20px 0px 0px;
+    @include flexCen();
+    flex-direction: column;
+    align-items: flex-end;
+    padding-right: 16px;
+    .content {
+      font-size: $fontsize-s;
+      color: $color-lightblue;
+    }
+    .answer {
+      font-size: $fontsize-l;
+      font-weight: bold;
+    }
+  }
+}
+
+// calculator bottom
+
+.number {
+  @include box();
+}
+
+.calculator-center{
+  @include flex();
+  .calculator-number {
+    @include flex();
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+  .calculator-symbol {
+    font-weight: bold;
+    margin-right: 8px;
+    .number {
+      background: $color-drakblue-bg 0% 0% no-repeat padding-box;
+      border-radius: 16px;
+    }
+  }
+}
+
+// calculator-footer
+
+.calculator-footer {
+  @include flex();
+  justify-content: space-around;
+  align-items: center;
+  color: $color-lightblue;
+  .number{
+    margin-bottom: 0;
+  }
+  .equal{
+    color: $color-write;
+    width: 155px;
+    height: 64px;
+    background: transparent linear-gradient(90deg, $color-lightblue 0%, $color-purple 100%) 0% 0% no-repeat padding-box;
+    border-radius: 16px;
+    @include flexCen();
+    justify-content: flex-end;
+    p{
+      cursor: pointer;
+      margin: 18px 30px;
+    }
+  }
+}
